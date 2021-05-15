@@ -1,9 +1,11 @@
 import React from "react";
+import Books from "./Books";
 
 const App = () => {
   return (
-    <div>
-      <h1>books</h1>
+    <div className="app">
+      <Books />
+      <Books />
     </div>
   );
 };
