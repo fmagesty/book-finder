@@ -1,13 +1,27 @@
 import React from "react";
-import Books from "./Books";
+import "react-toastify/dist/ReactToastify.min.css";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Favoritos from "./Components/Favoritos";
+import Homepage from "./Components/Homepage";
 
-const App = () => {
+function App() {
   return (
-    <div className="app">
-      <Books />
-      <Books />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/">
+            <Homepage />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/favoritos">
+            <Favoritos />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
