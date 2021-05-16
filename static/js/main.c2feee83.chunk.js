@@ -1,2 +1,0 @@
-(this.webpackJsonpheybooks=this.webpackJsonpheybooks||[]).push([[0],{10:function(e,t,n){"use strict";n.r(t);var c=n(1),o=n.n(c),s=n(3),r=n.n(s),i=(n(8),n(0)),b=function(){return Object(i.jsx)("div",{children:Object(i.jsx)("h1",{children:"books"})})};r.a.render(Object(i.jsx)(o.a.StrictMode,{children:Object(i.jsx)(b,{})}),document.getElementById("root"))},8:function(e,t,n){}},[[10,1,2]]]);
-//# sourceMappingURL=main.c2feee83.chunk.js.map
