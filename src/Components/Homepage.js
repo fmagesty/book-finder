@@ -20,28 +20,30 @@ function Homepage() {
   const [cards, setCards] = useState([]);
   const [index, setIndex] = useState(0);
 
+  // Set favoritos
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   console.log(window.localStorage.getItem(localStorage.key(i)));
+  // }
+  // localStorage.getItem(book.volumeInfo.title) === book.title;
+
   // HANDLES SEARCH IF ENTER IS PRESSED
   const handleEnter = (e) => {
     if (e.charCode === 13) {
       handleSubmit();
     }
   };
-  // localStorage.getItem(book.volumeInfo.title) === book.title;
-  const showFavoritos = () => {
-    if (loading) {
-      return (
-        <div className="d-flex justify-content-center mt-3">
-          <Spinner style={{ width: "3rem", height: "3rem" }} />
-        </div>
-      );
-    }
-    if (localStorage.length > 0) {
-      const books = cards.map((book) => {
-        let cover = noCover;
-        if (book.volumeInfo.imageLinks) {
-          cover = book.volumeInfo.imageLinks.thumbnail;
-        }
 
+  const showFavoritos = () => {
+    const books = cards.filter((book) => {
+      let bookMap = cards.map(
+        (book) => localStorage.getItem(book.volumeInfo.title) === book.id
+      );
+      console.log(bookMap);
+      let cover = noCover;
+      if (book.volumeInfo.imageLinks) {
+        cover = book.volumeInfo.imageLinks.thumbnail;
+      }
+      if (!bookMap) {
         return (
           <div className="col-lg-4 mb-3" key={book.id}>
             <BookCard
@@ -53,13 +55,13 @@ function Homepage() {
             />
           </div>
         );
-      });
-      return (
-        <div className="container my-5">
-          <div className="row">{books}</div>
-        </div>
-      );
-    }
+      }
+    });
+    return (
+      <div className="container my-5">
+        <div className="row">{books}</div>
+      </div>
+    );
   };
 
   const fetchAPIData = async () => {
@@ -137,13 +139,10 @@ function Homepage() {
           </InputGroup>
           <div className="btns d-flex text-white justify-content-center">
             <FormGroup>
-              <Button>Homepage</Button>
+              <Button color="primary">Homepage</Button>
             </FormGroup>
             <FormGroup className="ml-5">
-              <Button
-                style={{ color: "black", background: "yellow" }}
-                onClick={showFavoritos}
-              >
+              <Button color="warning" onClick={showFavoritos}>
                 Favoritos
               </Button>
             </FormGroup>
@@ -192,6 +191,7 @@ function Homepage() {
     <div className="w-100 h-100">
       {mainHeader()}
       {handleCards()}
+      {showFavoritos()}
       <ToastContainer />
     </div>
   );
