@@ -1,6 +1,6 @@
 {
   "name": "heybooks",
-  "homepage": "https://fmagesty.github.io/hey-books/",
+  "homepage": "https://fmagesty.github.io/book-finder/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
