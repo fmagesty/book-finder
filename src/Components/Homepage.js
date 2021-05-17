@@ -34,34 +34,7 @@ function Homepage() {
   };
 
   const showFavoritos = () => {
-    const books = cards.filter((book) => {
-      let bookMap = cards.map(
-        (book) => localStorage.getItem(book.volumeInfo.title) === book.id
-      );
-      console.log(bookMap);
-      let cover = noCover;
-      if (book.volumeInfo.imageLinks) {
-        cover = book.volumeInfo.imageLinks.thumbnail;
-      }
-      if (!bookMap) {
-        return (
-          <div className="col-lg-4 mb-3" key={book.id}>
-            <BookCard
-              thumbnail={cover}
-              title={book.volumeInfo.title}
-              description={book.volumeInfo.description}
-              publishedDate={book.volumeInfo.publishedDate}
-              id={book.id}
-            />
-          </div>
-        );
-      }
-    });
-    return (
-      <div className="container my-5">
-        <div className="row">{books}</div>
-      </div>
-    );
+    console.log("showFavoritos");
   };
 
   const fetchAPIData = async () => {
@@ -191,7 +164,7 @@ function Homepage() {
     <div className="w-100 h-100">
       {mainHeader()}
       {handleCards()}
-      {showFavoritos()}
+      {/* {showFavoritos()} */}
       <ToastContainer />
     </div>
   );
