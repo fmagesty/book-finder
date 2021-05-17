@@ -1,5 +1,5 @@
 Encontre seu livro!
 
-Website: https://fmagesty.github.io/hey-books/
+Website: https://fmagesty.github.io/book-finder/
 
 (Work in progress)
