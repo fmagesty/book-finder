@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Card, CardTitle, CardImg, CardBody, Button, Modal } from "reactstrap";
-const BookCard = ({ thumbnail, title, description, publishedDate }) => {
+const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
   // Hooks
   const [modal, setModal] = useState(false);
-  const [favoritos, setFavoritos] = useState(false);
   const toggle = () => setModal(!modal);
 
   // HANDLE FAVORITOS
-  const handleFavoritos = () => {
-    console.log("adicionado aos favoritos");
-    setFavoritos(true);
+  const addFavoritos = () => {
+    console.log(`id ${id} favoritado`);
+    window.localStorage.setItem(title, id);
   };
-
   return (
     <Card style={{ width: "233px" }} className="m-auto ">
       <CardImg
@@ -24,7 +22,7 @@ const BookCard = ({ thumbnail, title, description, publishedDate }) => {
         <CardTitle className="card-title">{title}</CardTitle>
         <Button onClick={toggle}>Detalhes</Button>
         <Button
-          onClick={handleFavoritos}
+          onClick={addFavoritos}
           style={{
             backgroundColor: "yellow",
             color: "black",
@@ -34,7 +32,7 @@ const BookCard = ({ thumbnail, title, description, publishedDate }) => {
           +Favoritos
         </Button>
       </CardBody>
-      <Modal isOpen={modal} toggle={toggle} addFavoritos={favoritos}>
+      <Modal isOpen={modal} toggle={toggle}>
         <div className="modal-header d-flex justify-content-center">
           <h5 className="modal-title text-center" id="exampleModalLabel">
             {title}
