@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.min.css";
 import BookCard from "../Components/BookCard";
 import bg from "../Assets/bg.jpg";
 import noCover from "../Assets/noCover.png";
-import { API_KEY } from "../API/APIConfig.env";
 
 function Homepage() {
   //  HOOKS
@@ -40,7 +39,7 @@ function Homepage() {
   // HANDLE FAVORITOS
   const handleFavoritos = async () => {
     const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes/1yjEOoicURo&key=${API_KEY}`
+      `https://www.googleapis.com/books/v1/volumes/1yjEOoicURo`
     );
     console.log(response);
     const responseBody = await response.json();
