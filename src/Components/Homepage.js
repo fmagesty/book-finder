@@ -40,7 +40,7 @@ function Homepage() {
   // HANDLE FAVORITOS
   const handleFavoritos = async () => {
     let response = await fetch(
-      `https://books.googleapis.com/books/v1/volumes/1yjEOoicURo?key=${API_KEY}`
+      `https://books.googleapis.com/books/v1/volumes/1yjEOoicURo`
     );
     console.log(response);
     const responseBody = await response.json();
