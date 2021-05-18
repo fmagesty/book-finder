@@ -45,7 +45,8 @@ function Homepage() {
     const responseBody = await response.json();
     console.log(responseBody);
     console.log(responseBody.items);
-    setCards(responseBody.items);
+    // setCards(responseBody.items);
+    console.log("no fetch :(");
   };
 
   const fetchAPIData = async () => {
