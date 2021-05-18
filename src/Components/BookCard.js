@@ -7,7 +7,7 @@ const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
 
   // HANDLE FAVORITOS
   const addFavoritos = () => {
-    console.log(`etag ${id} favoritado`);
+    console.log(`id ${id} favoritado`);
     window.localStorage.setItem(title, id);
   };
   return (
