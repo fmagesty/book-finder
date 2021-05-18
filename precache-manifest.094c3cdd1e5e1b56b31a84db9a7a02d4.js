@@ -1,30 +1,34 @@
 self.__precacheManifest = [
   {
-    "revision": "17662d652dfd6f454410",
+    "revision": "8225b44e4c4612980f65",
     "url": "/book-finder/static/css/main.97a1d3b8.chunk.css"
   },
   {
-    "revision": "17662d652dfd6f454410",
-    "url": "/book-finder/static/js/main.7e023783.chunk.js"
+    "revision": "8225b44e4c4612980f65",
+    "url": "/book-finder/static/js/main.a68f01f0.chunk.js"
   },
   {
     "revision": "6a22570d814857707cd0",
     "url": "/book-finder/static/js/runtime~main.f70215bf.js"
   },
   {
-    "revision": "b97f23b5f837b89c6965",
+    "revision": "5999b9b6589969a9c55c",
     "url": "/book-finder/static/css/2.c1ea5a01.chunk.css"
   },
   {
-    "revision": "b97f23b5f837b89c6965",
-    "url": "/book-finder/static/js/2.e0ddffeb.chunk.js"
+    "revision": "5999b9b6589969a9c55c",
+    "url": "/book-finder/static/js/2.fd18e144.chunk.js"
   },
   {
     "revision": "82bc5fe4ac9171d39b492eaacb5845ec",
     "url": "/book-finder/static/media/bg.82bc5fe4.jpg"
   },
   {
-    "revision": "02251f454af1f9ac29ebce8d8e49132f",
+    "revision": "d8d03736bda1ef4200b391f0732933ff",
+    "url": "/book-finder/static/media/APIConfig.d8d03736.env"
+  },
+  {
+    "revision": "9d979e94fff58103108e419e801faabf",
     "url": "/book-finder/index.html"
   }
 ];
