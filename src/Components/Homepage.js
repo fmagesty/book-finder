@@ -12,13 +12,14 @@ import "react-toastify/dist/ReactToastify.min.css";
 import BookCard from "../Components/BookCard";
 import bg from "../Assets/bg.jpg";
 import noCover from "../Assets/noCover.png";
+import { API_KEY } from "../API/APIConfig.env";
 
 function Homepage() {
   //  HOOKS
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(40);
 
   // Set favoritos
   // for (var i = 0; i < localStorage.length; i++) {
@@ -26,15 +27,26 @@ function Homepage() {
   // }
   // localStorage.getItem(book.volumeInfo.title) === book.title;
 
+  // HANDLE HOMEPAGE
+  const handleHomepage = () => {
+    setCards([]);
+  };
   // HANDLES SEARCH IF ENTER IS PRESSED
   const handleEnter = (e) => {
     if (e.charCode === 13) {
       handleSubmit();
     }
   };
-
-  const showFavoritos = () => {
-    console.log("showFavoritos");
+  // HANDLE FAVORITOS
+  const handleFavoritos = async () => {
+    const response = await fetch(
+      `https://www.googleapis.com/books/v1/volumes/1yjEOoicURo&key=${API_KEY}`
+    );
+    console.log(response);
+    const responseBody = await response.json();
+    console.log(responseBody);
+    console.log(responseBody.items);
+    setCards(responseBody.items);
   };
 
   const fetchAPIData = async () => {
@@ -112,10 +124,12 @@ function Homepage() {
           </InputGroup>
           <div className="btns d-flex text-white justify-content-center">
             <FormGroup>
-              <Button color="primary">Homepage</Button>
+              <Button color="primary" onClick={handleHomepage}>
+                Homepage
+              </Button>
             </FormGroup>
             <FormGroup className="ml-5">
-              <Button color="warning" onClick={showFavoritos}>
+              <Button color="warning" onClick={handleFavoritos}>
                 Favoritos
               </Button>
             </FormGroup>
