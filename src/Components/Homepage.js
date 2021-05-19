@@ -13,7 +13,7 @@ import BookCard from "../Components/BookCard";
 import bg from "../Assets/bg.jpg";
 import noCover from "../Assets/noCover.png";
 
-function Homepage() {
+function Homepage({ id }) {
   //  HOOKS
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,15 +37,8 @@ function Homepage() {
     }
   };
   // HANDLE FAVORITOS
-  const handleFavoritos = async () => {
-    let response = await fetch(
-      `https://books.googleapis.com/books/v1/volumes/1yjEOoicURo`
-    );
-    console.log(response);
-    const responseBody = await response.json();
-    console.log(responseBody);
-    // setCards(responseBody.items);
-    console.log("Service temporarily unavailable.");
+  const handleFavoritos = () => {
+    console.log(window.localStorage);
   };
 
   const fetchAPIData = async () => {
@@ -65,6 +58,7 @@ function Homepage() {
     setLoading(true);
     const response = await fetchAPIData();
     setLoading(false);
+    console.log(response.items);
     setCards(response.items);
   };
 
@@ -177,7 +171,6 @@ function Homepage() {
     <div className="w-100 h-100">
       {mainHeader()}
       {handleCards()}
-      {/* {showFavoritos()} */}
       <ToastContainer />
     </div>
   );
