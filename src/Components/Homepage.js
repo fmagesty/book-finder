@@ -36,9 +36,9 @@ function Homepage({ id }) {
       handleSubmit();
     }
   };
-  // HANDLE FAVORITOS
-  const handleFavoritos = () => {
-    console.log(window.localStorage);
+  // HANDLE FAVORITOS PAGE
+  const handleFavoritosPage = async () => {
+    console.log("HANDLE FAVORITOS PAGE");
   };
 
   const fetchAPIData = async () => {
@@ -58,7 +58,6 @@ function Homepage({ id }) {
     setLoading(true);
     const response = await fetchAPIData();
     setLoading(false);
-    console.log(response.items);
     setCards(response.items);
   };
 
@@ -122,7 +121,7 @@ function Homepage({ id }) {
               </Button>
             </FormGroup>
             <FormGroup className="ml-5">
-              <Button color="warning" onClick={handleFavoritos}>
+              <Button color="warning" onClick={handleFavoritosPage}>
                 Favoritos
               </Button>
             </FormGroup>

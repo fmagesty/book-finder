@@ -1,15 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardTitle, CardImg, CardBody, Button, Modal } from "reactstrap";
+import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
+
 const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
   // Hooks
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const [favorites, setFavorites] = useState([]);
+  const getArray = JSON.parse(localStorage.getItem("favorites") || 0);
+
+  useEffect(() => {
+    if (getArray !== 0) {
+      setFavorites([...getArray]);
+    }
+  }, []);
 
   // HANDLE FAVORITOS
-  const addFavoritos = () => {
-    console.log(`id ${id} favoritado`);
-    window.localStorage.setItem(title, id);
+  const addFavorite = (props) => {
+    let array = favorites;
+    let addArray = true;
+    array.map((item, key) => {
+      if (item === props.id) {
+        array.splice(key, 1);
+        addArray = false;
+      }
+      return null;
+    });
+    if (addArray) {
+      array.push(props.id);
+    }
+    setFavorites([...array]);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    let storage = localStorage.getItem("favItem" + (props.id || 0));
+    if (storage === null) {
+      localStorage.setItem("favItem" + props.id, JSON.stringify(props.items));
+    } else {
+      localStorage.removeItem("favItem" + props.id);
+    }
   };
+
   return (
     <Card style={{ width: "233px" }} className="m-auto ">
       <CardImg
@@ -21,16 +51,22 @@ const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
       <CardBody>
         <CardTitle className="card-title">{title}</CardTitle>
         <Button onClick={toggle}>Detalhes</Button>
-        <Button
-          onClick={addFavoritos}
-          style={{
-            backgroundColor: "yellow",
-            color: "black",
-            marginLeft: "0.5rem",
-          }}
-        >
-          +Favoritos
-        </Button>
+        {favorites.includes(id) ? (
+          <IoIosHeart
+            size={30}
+            onClick={() => addFavorite({ title, id })}
+            style={{ marginLeft: "3rem", color: "red" }}
+          />
+        ) : (
+          <IoIosHeartEmpty
+            size={30}
+            onClick={() => addFavorite({ title, id })}
+            style={{
+              marginLeft: "3rem",
+              color: "red",
+            }}
+          />
+        )}
       </CardBody>
       <Modal isOpen={modal} toggle={toggle}>
         <div className="modal-header d-flex justify-content-center">
