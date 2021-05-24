@@ -13,7 +13,7 @@ import BookCard from "../Components/BookCard";
 import bg from "../Assets/bg.jpg";
 import noCover from "../Assets/noCover.png";
 
-function Homepage({ id }) {
+function Homepage() {
   //  HOOKS
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,6 +28,7 @@ function Homepage({ id }) {
 
   // HANDLE HOMEPAGE
   const handleHomepage = () => {
+    console.log(cards);
     setCards([]);
   };
   // HANDLES SEARCH IF ENTER IS PRESSED
@@ -37,8 +38,10 @@ function Homepage({ id }) {
     }
   };
   // HANDLE FAVORITOS PAGE
-  const handleFavoritosPage = async () => {
-    console.log("HANDLE FAVORITOS PAGE");
+  const handleFavoritosPage = () => {
+    setLoading(true);
+    console.log(window.localStorage);
+    setLoading(false);
   };
 
   const fetchAPIData = async () => {

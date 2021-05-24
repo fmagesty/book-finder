@@ -31,12 +31,17 @@ const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
     }
     setFavorites([...array]);
     localStorage.setItem("favorites", JSON.stringify(favorites));
-
-    let storage = localStorage.getItem("favItem" + (props.id || 0));
+    let storage = localStorage.getItem(props.id);
     if (storage === null) {
-      localStorage.setItem("favItem" + props.id, JSON.stringify(props.items));
+      localStorage.setItem(props.id, [
+        props.title,
+        props.thumbnail,
+        props.description,
+        props.publishedDate,
+        props.id,
+      ]);
     } else {
-      localStorage.removeItem("favItem" + props.id);
+      localStorage.removeItem(props.id);
     }
   };
 
@@ -60,7 +65,9 @@ const BookCard = ({ thumbnail, title, description, publishedDate, id }) => {
         ) : (
           <IoIosHeartEmpty
             size={30}
-            onClick={() => addFavorite({ title, id })}
+            onClick={() =>
+              addFavorite({ title, id, thumbnail, description, publishedDate })
+            }
             style={{
               marginLeft: "3rem",
               color: "red",
