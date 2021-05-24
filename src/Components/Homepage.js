@@ -56,12 +56,20 @@ function Homepage() {
     }
     return responseBody;
   };
+
   // SEARCH BOOKS
   const handleSubmit = async () => {
     setLoading(true);
     const response = await fetchAPIData();
-    setLoading(false);
-    setCards(response.items);
+    if (!response.items) {
+      return null;
+    } else {
+      //
+      if (response.items.length > 0) {
+        setLoading(false);
+        setCards(response.items);
+      }
+    }
   };
 
   const handleNextPage = async () => {
