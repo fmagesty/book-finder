@@ -132,9 +132,9 @@ function Homepage() {
               </Button>
             </FormGroup>
             <FormGroup className="ml-5">
-              <Button color="warning" onClick={handleFavoritosPage}>
+              {/* <Button color="warning" onClick={handleFavoritosPage}>
                 Favoritos
-              </Button>
+              </Button> */}
             </FormGroup>
           </div>
         </div>
